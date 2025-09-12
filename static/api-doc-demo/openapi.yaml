@@ -1,0 +1,180 @@
+openapi: 3.1.0
+info:
+  title: Cloud Workstation Service API
+  description: |
+    Example API spec for managing cloud-based workstations.  
+    Users can provision, start/stop, configure, and view usage metrics.
+  version: "1.0.0"
+servers:
+  - url: https://api.cloudworkstation.example.com/v1
+
+paths:
+  /workstations:
+    post:
+      summary: Create a new workstation
+      description: Provision a new cloud workstation for the user.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWorkstationRequest'
+      responses:
+        '201':
+          description: Workstation created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workstation'
+
+  /workstations/{id}/launch:
+    post:
+      summary: Launch a workstation
+      description: Power on a stopped workstation.
+      parameters:
+        - $ref: '#/components/parameters/WorkstationId'
+      responses:
+        '200':
+          description: Workstation launched
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workstation'
+
+  /workstations/{id}/stop:
+    post:
+      summary: Stop a workstation
+      description: Power off a running workstation.
+      parameters:
+        - $ref: '#/components/parameters/WorkstationId'
+      responses:
+        '200':
+          description: Workstation stopped
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workstation'
+
+  /workstations/{id}/usage:
+    get:
+      summary: Get usage data
+      description: Retrieve CPU, GPU, memory, and billing usage for a workstation.
+      parameters:
+        - $ref: '#/components/parameters/WorkstationId'
+      responses:
+        '200':
+          description: Usage data retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageData'
+
+  /workstations/{id}:
+    patch:
+      summary: Update workstation configuration
+      description: Edit the name or configuration of an existing workstation.
+      parameters:
+        - $ref: '#/components/parameters/WorkstationId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateWorkstationRequest'
+      responses:
+        '200':
+          description: Workstation updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workstation'
+
+components:
+  parameters:
+    WorkstationId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique ID of the workstation
+
+  schemas:
+    Workstation:
+      type: object
+      required: [id, name, status, configuration]
+      properties:
+        id:
+          type: string
+          example: "ws-12345"
+        name:
+          type: string
+          example: "Artist-Workstation-01"
+        status:
+          type: string
+          enum: [stopped, running, provisioning, error]
+          example: running
+        configuration:
+          $ref: '#/components/schemas/WorkstationConfig'
+
+    WorkstationConfig:
+      type: object
+      properties:
+        cpuCores:
+          type: integer
+          example: 8
+        memoryGB:
+          type: integer
+          example: 32
+        gpu:
+          type: string
+          example: "NVIDIA RTX A5000"
+        storageGB:
+          type: integer
+          example: 512
+        region:
+          type: string
+          example: "us-west-2"
+
+    CreateWorkstationRequest:
+      type: object
+      required: [name, configuration]
+      properties:
+        name:
+          type: string
+          example: "My-New-Workstation"
+        configuration:
+          $ref: '#/components/schemas/WorkstationConfig'
+
+    UpdateWorkstationRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "Renamed-Workstation"
+        configuration:
+          $ref: '#/components/schemas/WorkstationConfig'
+
+    UsageData:
+      type: object
+      properties:
+        cpuHours:
+          type: number
+          format: float
+          example: 12.5
+        gpuHours:
+          type: number
+          format: float
+          example: 40.0
+        memoryGBHours:
+          type: number
+          format: float
+          example: 256.0
+        costUSD:
+          type: number
+          format: float
+          example: 123.45
+        lastUpdated:
+          type: string
+          format: date-time
+          example: "2025-09-11T12:00:00Z"
