@@ -1,5 +1,5 @@
 # Hugo configuration file
-title: My Site
+title: Shannon Gold | Technical Writing Samples
 
 # import hextra as module
 module:
@@ -22,10 +22,13 @@ menu:
       pageRef: /about
       weight: 1
     - name: Contact ↗
-      pageRef: resume
+      pageRef: /contact
       weight: 2
-    - name: Search
+    - name: Resume ↗
+      pageRef: /resume
       weight: 3
+    - name: Search
+      weight: 4
       params:
         type: search
     - name: GitHub
