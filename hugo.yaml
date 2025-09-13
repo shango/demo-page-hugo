@@ -49,4 +49,4 @@ params:
 
   editURL:
     enable: true
-    base: "https://shango.github.io"
+    base: "https://shango.github.io/public/"
