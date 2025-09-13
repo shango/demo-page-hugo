@@ -1,10 +1,9 @@
 ---
-title: aws-workstation
+title: ""
 date: 2025-09-12T11:46:07-06:00
-draft: true
 ---
 
-# Deploy a remote VFX workstation on AWS
+# Deploy a Remote VFX Workstation on AWS
 
 Visual effects studios increasingly use cloud-based workstations as an alternative to traditional on-premises setups. This guide shows you how to deploy a high-performance compositing workstation on Amazon Web Services (AWS). You'll be able to access to your workstation remotely using Windows Remote Desktop Protocol (RDP) and install your preferred compositing software.
 
@@ -36,12 +35,12 @@ Many GPU-enabled instances require quota increases before you can launch them.
 
 2. In the upper right corner of the page, choose a geographic region closest to your user base. For example, choose **us-west-1** for United States (N. California).
 
-   ![Region selection dropdown showing 'us-west-1'](../images/f1_set_region.png)
+   ![Region selection dropdown showing 'us-west-1'](/images/f1_set_region.png)
    > *Figure 1. Region set to 'United States (N. California)'*
 
 3. From the **User Account** drop-down menu (labeled with your account name in the top-right corner), choose **Service Quotas**.
 
-   ![User Account dropdown open with Service Quotas link highlighted](../images/f2_user_drop_down_hl.png)
+   ![User Account dropdown open with Service Quotas link highlighted](/images/f2_user_drop_down_hl.png)
    > *Figure 2. User Account drop-down showing Service Quotas link*
 
 4. On the **Service Quotas** page, select **AWS services** from the left navigation panel.
@@ -52,14 +51,14 @@ Many GPU-enabled instances require quota increases before you can launch them.
 
    The **Applied account-level quota value** section displays your current quota.
 
-   ![Service Quota display with current value highlighted](../images/f3_service_quota_hl.png)
+   ![Service Quota display with current value highlighted](/images/f3_service_quota_hl.png)
    > *Figure 3. The current Service Quota value is highlighted*
 
 7. If your current quota is less than 8, click **Request increase at account level**.
 
 8. Set the **Increase quota value** to at least 8 to support the g4dn.8xlarge instance.
 
-   ![Quota increase dialog with value set to 8](../images/f4_set_new_quota_hl.png)
+   ![Quota increase dialog with value set to 8](/images/f4_set_new_quota_hl.png)
    > *Figure 4. Setting quota increase value*
 
 9. Provide a brief justification for your request—for example, enter Deploying VFX workstation for remote production—and submit the request.
@@ -76,12 +75,12 @@ After your quota increase is approved, you can launch your workstation instance.
 
 3. Under **Application and OS Images (Amazon Machine Image)**, click the **Quick Start** tab, search for **Windows**, and select **Microsoft Windows Server 2025 Base**.
 
-   ![Windows Server AMI selection with Windows Server 2025 highlighted](../images/f5_select_win_hl.png)
+   ![Windows Server AMI selection with Windows Server 2025 highlighted](/images/f5_select_win_hl.png)
    > *Figure 5. Microsoft Windows Server 2025 Base selected*
 
 4. Under **Instance type**, search for and select **g4dn.8xlarge**. This instance provides a good balance of GPU power (1 NVIDIA T4 GPU), CPU resources (32 vCPUs), memory (128 GB), and network performance for high-end compositing work.
 
-   ![Instance type selection with g4dn.8xlarge highlighted](../images/f6_instance_type.png)
+   ![Instance type selection with g4dn.8xlarge highlighted](/images/f6_instance_type.png)
    > *Figure 6. g4dn.8xlarge instance type selected*
 
 5. Under **Key pair (login)**, create a new key pair:
@@ -92,7 +91,7 @@ After your quota increase is approved, you can launch your workstation instance.
    - Choose **PEM** as the Private key file format.
    - Click **Create key pair**.
 
-   ![Key pair creation dialog](../images/f7_create_key_pairs.png)
+   ![Key pair creation dialog](/images/f7_create_key_pairs.png)
    > *Figure 7. Creating a new key pair*
 
    The private key file (.pem) automatically downloads to your computer. Store this file in a secure location because you need it to retrieve the administrator password for your Windows instance.
@@ -110,7 +109,7 @@ After your quota increase is approved, you can launch your workstation instance.
    - Increase the **Root volume** (C: drive) size from 30 GB to **500 GB**.
    - Leave the volume type as **gp3** (General Purpose SSD).
 
-   ![Storage configuration with root volume](../images/f8_config_storage.png)
+   ![Storage configuration with root volume](/images/f8_config_storage.png)
    > *Figure 8. Configured root volume*
 
 8. Review your selections and click **Launch instance**.

@@ -1,5 +1,5 @@
 ---
-title: Shannon Gold
+title: ""
 toc: false
 ---
 

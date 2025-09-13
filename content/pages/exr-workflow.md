@@ -1,10 +1,9 @@
 ---
-title: "Exr Workflow"
+title: ""
 date: 2025-09-12T11:46:21-06:00
-draft: true
 ---
 
-# Multi-channel EXR Files in Adobe After Effects 2025
+# Multi-channel EXR File Workflow in Adobe After Effects 2025
 
 
 ## Introduction 
@@ -14,13 +13,6 @@ OpenEXR (EXR) is a professional image format that supports high-dynamic-range co
 This guide provides a quick-start workflow for integrating multi-channel 32-bit OpenEXR (EXR) files into Adobe After Effects using an Academy Color Encoding System (ACES) pipeline. It explains how to configure After Effects for ACES color management, interpret EXR footage correctly, composite in a 32-bit linear color space, and export while preserving color fidelity.
 
 ---
-
-## Contents:
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
 
 ## Who Is This Guide For?
 
