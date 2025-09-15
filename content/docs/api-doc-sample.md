@@ -40,6 +40,10 @@ All requests must include a valid API key in the `Authorization` header:
 ```https
 Authorization: Bearer <API_TOKEN>
 ```
+## Response Format
+
+This API returns **direct JSON objects** instead of nested envelopes for simplicity and ease of client parsing.
+
 
 ## POST Create a New Workstation
 ### Resource Description
@@ -47,10 +51,6 @@ Provision a new cloud workstation for the authenticated user.
 A workstation consists of a CPU, GPU, memory, and storage resources, and can later be launched, stopped, or reconfigured.
 
 Use this endpoint when you want to *add a new workstation* to a project or user account.
-
-## Response Format
-
-This API returns **direct JSON objects** instead of nested envelopes for simplicity and ease of client parsing.
 
 ### Endpoint
 ```https
@@ -238,7 +238,6 @@ This endpoint does not require a request body.
   }'
   ```
   {{</tab>}}
-
 {{</tabs>}}
 
 ### Error Responses
@@ -252,7 +251,7 @@ This endpoint does not require a request body.
 
 ## POST Stop a Workstation
 ### Resource Description
-Power Off a Running Workstation. The workstation must be in a running state before it can be stopped.
+Stop a Running Workstation. The workstation must be in a running state before it can be stopped.
 
 Use this endpoint to stop or time-out a workstation.
 
@@ -268,12 +267,15 @@ Accept: application/json
 | ---- | ---- | ------ | -------- | --------------------------------------- |
 | `id` | path | string | Yes      | Unique ID of the workstation to stop. |
 
+### Request Body
+This endpoint does not require a request body.
+
 ### Response
 | Status | Meaning               | Description                                      |
 |--------|-----------------------|--------------------------------------------------|
 | 200    | Success               | Returns the workstation object in its stopped state |
 
-{{<tabs items="Example,Schema">}}
+{{<tabs items="Example,Schema,Try it">}}
   {{<tab>}}
 ```json
 {
@@ -306,6 +308,23 @@ Accept: application/json
 }
 ```
   {{</tab>}}
+  {{<tab>}}
+  ```curl
+  curl -X POST "https://api.cloudworkstation.example.com/v1/workstations" \
+  -H "Authorization: Bearer <API_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "My-New-Workstation",
+    "configuration": {
+      "cpuCores": 8,
+      "memoryGB": 32,
+      "gpu": "NVIDIA RTX A5000",
+      "storageGB": 512,
+      "region": "us-west-2"
+    }
+  }'
+  ```
+  {{</tab>}}
 {{</tabs>}}
 
 
@@ -335,33 +354,42 @@ Accept: application/json
 | ---- | ---- | ------ | -------- | --------------------------------------- |
 | `id` | path | string | Yes      | Unique ID of the workstation to query for usage data. |
 
+### Request Body
+This endpoint does not require a request body.
+
 ### Response
 | Status | Meaning               | Description                                      |
 |--------|-----------------------|--------------------------------------------------|
 | 200    | Success               | Returns the workstation usage object             |
 
-{{<tabs items="Example,Schema">}}
+{{<tabs items="Example,Schema,Try it">}}
   {{<tab>}}
-```json
-{
-  "cpuHours": 12.5,
-  "gpuHours": 40,
-  "memoryGBHours": 256,
-  "costUSD": 123.45,
-  "lastUpdated": "2025-09-11T12:00:00Z"
-}
-```
+    ```json
+    {
+      "cpuHours": 12.5,
+      "gpuHours": 40,
+      "memoryGBHours": 256,
+      "costUSD": 123.45,
+      "lastUpdated": "2025-09-11T12:00:00Z"
+    }
+    ```
   {{</tab>}}
   {{<tab>}}
-```json
-{
-  "cpuHours": "float",
-  "gpuHours": "integer",
-  "memoryGBHours": "integer",
-  "costUSD": "float",
-  "lastUpdated": "string (date-time)"
-}
-```
+    ```json
+    {
+      "cpuHours": "float",
+      "gpuHours": "integer",
+      "memoryGBHours": "integer",
+      "costUSD": "float",
+      "lastUpdated": "string (date-time)"
+    }
+    ```
+  {{</tab>}}
+  {{<tab>}}
+    ```curl
+      curl -X GET "https://api.cloudworkstation.example.com/v1/workstations/ws-12345/usage" \
+    -H "Authorization: Bearer <YOUR_TOKEN>"
+    ```
   {{</tab>}}
 {{</tabs>}}
 
@@ -375,7 +403,7 @@ Accept: application/json
 
 
 ## PATCH Update workstation configuration
-### Request Body
+### Resource Description
 Use this endpoint to update the workstation configuration.
 The workstation must be in its shutdown state for the configuration to be updated.
 
@@ -393,52 +421,53 @@ Accept: application/json
 | ---- | ---- | ------ | -------- | --------------------------------------- |
 | `id` | path | string | Yes      | Unique ID of the workstation to update |
 
+### Request Body
 
 {{<tabs items="Example,Schema">}}
   {{<tab>}}
-```json
-{
-  "name": "Renamed-Workstation",
-  "configuration": {
-    "cpuCores": 8,
-    "memoryGB": 32,
-    "gpu": "NVIDIA RTX A5000",
-    "storageGB": 512,
-    "region": "us-west-2"
-  }
-}
-```
-  {{</tab>}}
-  {{<tab>}}
-```json
-{
-  "name": "string",
-  "configuration": {
-    "cpuCores": "integer",
-    "memoryGB": "integer",
-    "gpu": "string",
-    "storageGB": "integer",
-    "region": "string (Region)"
-  }
-}
-```
-  {{</tab>}}
-  {{<tab>}}
-  ```json
-  curl -X POST "https://api.cloudworkstation.example.com/v1/workstations" \
-  -H "Authorization: Bearer <API_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "My-New-Workstation",
-    "configuration": {
-      "cpuCores": 8,
-      "memoryGB": 32,
-      "gpu": "NVIDIA RTX A5000",
-      "storageGB": 512,
-      "region": "us-west-2"
+    ```json
+    {
+      "name": "Renamed-Workstation",
+      "configuration": {
+        "cpuCores": 8,
+        "memoryGB": 32,
+        "gpu": "NVIDIA RTX A5000",
+        "storageGB": 512,
+        "region": "us-west-2"
+      }
     }
-  }'
-  ```
+    ```
+  {{</tab>}}
+      {{<tab>}}
+    ```json
+    {
+      "name": "string",
+      "configuration": {
+        "cpuCores": "integer",
+        "memoryGB": "integer",
+        "gpu": "string",
+        "storageGB": "integer",
+        "region": "string (Region)"
+      }
+    }
+    ```
+  {{</tab>}}
+  {{<tab>}}
+    ```json
+    curl -X POST "https://api.cloudworkstation.example.com/v1/workstations" \
+    -H "Authorization: Bearer <API_TOKEN>" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "name": "My-New-Workstation",
+      "configuration": {
+        "cpuCores": 8,
+        "memoryGB": 32,
+        "gpu": "NVIDIA RTX A5000",
+        "storageGB": 512,
+        "region": "us-west-2"
+      }
+    }'
+    ```
   {{</tab>}}
 {{</tabs>}}
 
@@ -450,36 +479,36 @@ Accept: application/json
 
 {{<tabs items="Example,Schema">}}
   {{< tab >}}
-```json
-{
-  "id": "ws-12345",
-  "name": "Artist-Workstation-01",
-  "status": "running",
-  "configuration": {
-    "cpuCores": 8,
-    "memoryGB": 32,
-    "gpu": "NVIDIA RTX A5000",
-    "storageGB": 512,
-    "region": "us-west-2"
-  }
-}
-```
+    ```json
+    {
+      "id": "ws-12345",
+      "name": "Artist-Workstation-01",
+      "status": "running",
+      "configuration": {
+        "cpuCores": 8,
+        "memoryGB": 32,
+        "gpu": "NVIDIA RTX A5000",
+        "storageGB": 512,
+        "region": "us-west-2"
+      }
+    }
+    ```
   {{</tab>}}
   {{<tab>}}
-```json
-{
-  "id": "string",
-  "name": "string",
-  "status": "string (Workstation state)",
-  "configuration": {
-    "cpuCores": "integer",
-    "memoryGB": "integer",
-    "gpu": "string (GPU Type)",
-    "storageGB": "integer",
-    "region": "string (Region)"
-  }
-}
-```
+    ```json
+    {
+      "id": "string",
+      "name": "string",
+      "status": "string (Workstation state)",
+      "configuration": {
+        "cpuCores": "integer",
+        "memoryGB": "integer",
+        "gpu": "string (GPU Type)",
+        "storageGB": "integer",
+        "region": "string (Region)"
+      }
+    }
+    ```
   {{</tab>}}
 {{</tabs>}}
 
