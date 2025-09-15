@@ -18,17 +18,12 @@ markup:
 
 menu:
   main:
-    - name: About
-      pageRef: /about
-      weight: 1
+   
     - name: Contact ↗
       pageRef: /contact
-      weight: 2
-    - name: Resume ↗
-      pageRef: /resume
-      weight: 3
+      weight: 1
     - name: Search
-      weight: 4
+      weight: 2
       params:
         type: search
     - name: GitHub
@@ -39,6 +34,15 @@ menu:
     
 
 params:
+  page:
+    # full (100%), wide (90rem), normal (1280px)
+    width: normal
+
+  theme:
+    # light | dark | system
+    default: dark
+    displayToggle: true
+
   navbar:
     displayTitle: true
     displayLogo: false
