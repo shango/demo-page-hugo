@@ -1,7 +1,6 @@
 ---
 title: ""
 type: docs
-date: 2025-09-12T11:46:21-06:00
 ---
 
 # Multi-channel EXR File Workflow in Adobe After Effects 2025

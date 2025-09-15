@@ -1,6 +1,5 @@
 ---
 title: "Resume"
-date: 2025-09-12T22:04:14-06:00
 ---
 
 [Resume PDF](SGold_Tech_Writer_Resume.pdf)

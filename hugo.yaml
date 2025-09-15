@@ -48,9 +48,12 @@ params:
     displayLogo: false
 
   footer:
-    displayCopyright: false
+    displayCopyright: true
     displayPoweredBy: true
 
   editURL:
     enable: true
     base: "https://shango.github.io/public/"
+
+  customCSS:
+    - "css/custom.css"
