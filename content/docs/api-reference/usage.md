@@ -1,5 +1,8 @@
 ---
 title: "Retieve Usage Data"
+prev: /docs/stop
+next: /docs/delete
+toc: false
 weight: 6
 sidebar:
   open: true

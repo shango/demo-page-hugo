@@ -1,5 +1,7 @@
 ---
 title: "Delete a Workstation"
+prev: /docs/update
+toc: false
 weight: 7
 sidebar:
   open: true

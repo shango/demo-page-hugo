@@ -1,7 +1,8 @@
 ---
 title: "Update a Workstation"
 prev: /docs/stop
-next: /docs/delete
+next: /docs/usage
+toc: false
 weight: 5
 sidebar:
   open: true

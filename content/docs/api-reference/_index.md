@@ -1,6 +1,7 @@
 ---
 title: "API Reference"
 description: "Endpoints for the Cloud Workstation Service API."
+toc: false
 weight: 1
 sidebar:
   open: true
@@ -13,12 +14,7 @@ For the purposes of this sample, I've created a **minimal OpenAPI 3.1 spec** ren
 - `index.html` — Swagger UI page that loads and displays the 
 
 {{<cards>}}
-  {{<card link="/api-spec-sample" title="Swagger - OpenAPI spec" icon="book-open">}}
-{{</cards>}}
-
-
-{{<cards>}}
-  {{<card link="/Create" title="POST Create a Workstation" icon="book-open">}}
+  {{<card link="/api-spec-sample" title="Swagger - OpenAPI spec" icon="document-text">}}
 {{</cards>}}
 
 ## Versioning

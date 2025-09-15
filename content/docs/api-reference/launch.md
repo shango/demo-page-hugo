@@ -1,13 +1,12 @@
 ---
-title: "Launch Workstation"
+title: "Launch a Workstation"
 prev: /docs/create
 next: /docs/stop
+toc: false
 weight: 3
 sidebar:
   open: true
 ---
-
-## POST Launch a Workstation
 ### Resource Description
 Starts a previously provisioned workstation.
 The workstation must be in a stopped state before it can be launched. Once launched, it becomes accessible for use until explicitly stopped.

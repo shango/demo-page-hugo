@@ -2,6 +2,7 @@
 title: "Create a Workstation"
 prev: /docs/api-reference
 next: /docs/launch
+toc: false
 weight: 2
 sidebar:
   open: true

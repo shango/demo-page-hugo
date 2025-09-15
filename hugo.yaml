@@ -1,5 +1,5 @@
 # Hugo configuration file
-title: Shannon Gold | Technical Writing Samples
+title: Shannon Gold - Technical Writing Samples
 
 # import hextra as module
 module:
@@ -19,8 +19,8 @@ markup:
 menu:
   main:
    
-    - name: Contact ↗
-      pageRef: /contact
+    - name: Resume ↗
+      pageRef: resume
       weight: 1
     - name: Search
       weight: 2
@@ -49,10 +49,10 @@ params:
 
   footer:
     displayCopyright: true
-    displayPoweredBy: true
+    displayPoweredBy: false
 
   editURL:
-    enable: true
+    enable: false
     base: "https://shango.github.io/public/"
 
   customCSS:

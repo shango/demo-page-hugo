@@ -2,6 +2,7 @@
 title: "Stop a Workstation"
 prev: /docs/launch
 next: /docs/update
+toc: false
 weight: 4
 sidebar:
   open: true
