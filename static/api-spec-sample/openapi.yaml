@@ -89,6 +89,23 @@ paths:
               schema:
                 $ref: '#/components/schemas/Workstation'
 
+    delete:
+      summary: Delete a workstation
+      description: Permanently deletes a workstation. The workstation must be stopped before it can be deleted.
+      parameters:
+        - $ref: '#/components/parameters/WorkstationId'
+      responses:
+        '204':
+          description: Workstation deleted successfully. No content is returned.
+        '400':
+          description: Bad Request – Workstation is not in a stopped state.
+        '401':
+          description: Unauthorized – Request not authenticated.
+        '404':
+          description: Not Found – Workstation ID does not exist.
+        '500':
+          description: Internal Server Error – Failed to delete the workstation due to server-side issue.
+
 components:
   parameters:
     WorkstationId:

@@ -37,7 +37,7 @@ GET https://api.example.com/v1/workstations
 ## Authentication
 All requests must include a valid API key in the `Authorization` header:
 
-```https
+```bash
 Authorization: Bearer <API_TOKEN>
 ```
 ## Response Format
@@ -53,7 +53,7 @@ A workstation consists of a CPU, GPU, memory, and storage resources, and can lat
 Use this endpoint when you want to *add a new workstation* to a project or user account.
 
 ### Endpoint
-```https
+```bash
 POST /workstations
 Host: api.cloudworkstation.example.com/v1/
 Content-Type: application/json
@@ -76,7 +76,7 @@ The workstation details are provided in the request body.
     "gpu": "NVIDIA RTX A5000",
     "storageGB": 512,
     "region": "us-west-2"
-  }
+   }
 }
 ```
   {{</tab>}}
@@ -90,12 +90,12 @@ The workstation details are provided in the request body.
     "gpu": "string (GPU Type)",
     "storageGB": "integer",
     "region": "string (Region)"
-  }
+   }
 }
 ```
   {{</tab>}}
   {{<tab>}}
-```curl
+```bash
 curl -X POST "https://api.cloudworkstation.example.com/v1/workstations" \
   -H "Authorization: Bearer <API_TOKEN>" \
   -H "Content-Type: application/json" \
@@ -132,7 +132,7 @@ curl -X POST "https://api.cloudworkstation.example.com/v1/workstations" \
     "gpu": "NVIDIA RTX A5000",
     "storageGB": 512,
     "region": "us-west-2"
-  }
+   }
 }
 ```
   {{</tab>}}
@@ -169,7 +169,7 @@ The workstation must be in a stopped state before it can be launched. Once launc
 
 Use this endpoint to power on a workstation for interactive or automated workloads.
 ### Endpoint
-```https
+```bash
 POST /workstations/{id}/launch
 Host: api.cloudworkstation.example.com/v1/
 Content-Type: application/json
@@ -222,20 +222,9 @@ This endpoint does not require a request body.
 ```
   {{</tab>}}
   {{<tab>}}
-  ```curl
-  curl -X POST "https://api.cloudworkstation.example.com/v1/workstations" \
-  -H "Authorization: Bearer <API_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "My-New-Workstation",
-    "configuration": {
-      "cpuCores": 8,
-      "memoryGB": 32,
-      "gpu": "NVIDIA RTX A5000",
-      "storageGB": 512,
-      "region": "us-west-2"
-    }
-  }'
+  ```bash
+    curl -X GET "https://api.cloudworkstation.example.com/v1/workstations/ws-12345/launch" \
+-H "Authorization: Bearer <YOUR_TOKEN>"
   ```
   {{</tab>}}
 {{</tabs>}}
@@ -256,7 +245,7 @@ Stop a Running Workstation. The workstation must be in a running state before it
 Use this endpoint to stop or time-out a workstation.
 
 ### Endpoint
-```https
+```bash
 POST /workstations/{id}/stop
 Host: api.cloudworkstation.example.com/v1/
 Content-Type: application/json
@@ -309,20 +298,9 @@ This endpoint does not require a request body.
 ```
   {{</tab>}}
   {{<tab>}}
-  ```curl
-  curl -X POST "https://api.cloudworkstation.example.com/v1/workstations" \
-  -H "Authorization: Bearer <API_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "My-New-Workstation",
-    "configuration": {
-      "cpuCores": 8,
-      "memoryGB": 32,
-      "gpu": "NVIDIA RTX A5000",
-      "storageGB": 512,
-      "region": "us-west-2"
-    }
-  }'
+  ```bash
+    curl -X GET "https://api.cloudworkstation.example.com/v1/workstations/ws-12345/stop" \
+-H "Authorization: Bearer <YOUR_TOKEN>"
   ```
   {{</tab>}}
 {{</tabs>}}
@@ -343,7 +321,7 @@ Retrieve CPU, GPU, memory, and billing usage for a workstation.
 
 ### Endpoints
 
-```https
+```bash
 GET /workstations/{id}/usage
 Host: api.cloudworkstation.example.com/v1/
 Content-Type: application/json
@@ -386,7 +364,7 @@ This endpoint does not require a request body.
     ```
   {{</tab>}}
   {{<tab>}}
-    ```curl
+    ```bash
       curl -X GET "https://api.cloudworkstation.example.com/v1/workstations/ws-12345/usage" \
     -H "Authorization: Bearer <YOUR_TOKEN>"
     ```
@@ -404,13 +382,15 @@ This endpoint does not require a request body.
 
 ## PATCH Update workstation configuration
 ### Resource Description
-Use this endpoint to update the workstation configuration.
-The workstation must be in its shutdown state for the configuration to be updated.
+Update the name or configuration of an existing workstation.  
+This endpoint supports **partial updates** — only include the fields you want to change.  
+All unspecified fields remain unchanged.  
 
-This endpoint returns the updated workstation configuration object.
+> **Note:** The workstation must be in a **stopped** state before updates are allowed.  
+Requests to update a running workstation will return a `400 Bad Request` error.
 
-```https
-GET /workstations/{id}
+```bash
+PATCH /workstations/{id}
 Host: api.cloudworkstation.example.com/v1/
 Content-Type: application/json
 Accept: application/json
@@ -423,7 +403,7 @@ Accept: application/json
 
 ### Request Body
 
-{{<tabs items="Example,Schema">}}
+{{<tabs items="Example,Schema,Try it">}}
   {{<tab>}}
     ```json
     {
@@ -453,20 +433,14 @@ Accept: application/json
     ```
   {{</tab>}}
   {{<tab>}}
-    ```json
-    curl -X POST "https://api.cloudworkstation.example.com/v1/workstations" \
-    -H "Authorization: Bearer <API_TOKEN>" \
-    -H "Content-Type: application/json" \
-    -d '{
-      "name": "My-New-Workstation",
-      "configuration": {
-        "cpuCores": 8,
-        "memoryGB": 32,
-        "gpu": "NVIDIA RTX A5000",
-        "storageGB": 512,
-        "region": "us-west-2"
-      }
-    }'
+  **Updating workstation name**
+    ```bash
+    curl -X PATCH "https://api.cloudworkstation.example.com/v1/workstations/ws-12345" \
+  -H "Authorization: Bearer <YOUR_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Renamed-Workstation"
+  }'
     ```
   {{</tab>}}
 {{</tabs>}}
@@ -474,16 +448,16 @@ Accept: application/json
 ### Response
 | Status | Meaning               | Description                                      |
 |--------|-----------------------|--------------------------------------------------|
-| 200    | Success               | Returns the workstation configuration has been updated |
+| 200    | Success               | Returns the updated workstation object           |
 
 
 {{<tabs items="Example,Schema">}}
-  {{< tab >}}
+  {{<tab>}}
     ```json
     {
       "id": "ws-12345",
       "name": "Artist-Workstation-01",
-      "status": "running",
+      "status": "stopped",
       "configuration": {
         "cpuCores": 8,
         "memoryGB": 32,
@@ -515,7 +489,32 @@ Accept: application/json
 ### Error Responses
 | Status | Meaning               | Description                                      |
 |--------|-----------------------|--------------------------------------------------|
-| 400    | Bad Request           | Invalid workstation ID                           |
-| 401    | Unauthorized          | Request not authenticated                        |
+| 401    | Unauthorized          | Invalid workstation ID, invalid configuration values, or workstation not in a stopped state. |
 | 404    | Not Found             | Workstation ID does not exist                    |
-| 500    | Internal Server Error | Failed to update workstation configuration due to system error or workstation was not shut down |
+| 500    | Internal Server Error | Failed to update workstation due to system error
+
+
+## PATCH Update workstation configuration
+### Resource Description
+Delete the workstation
+
+### Endpoints
+
+```bash
+GET /workstations/{id}/delete
+Host: api.cloudworkstation.example.com/v1/
+Content-Type: application/json
+Accept: application/json
+```
+### Parameters
+| Name | In   | Type   | Required | Description                             |
+| ---- | ---- | ------ | -------- | --------------------------------------- |
+| `id` | path | string | Yes      | Unique ID of the workstation to query to delete. |
+
+### Request Body
+This endpoint does not require a request body.
+
+### Response
+| Status | Meaning               | Description                                      |
+|--------|-----------------------|--------------------------------------------------|
+| 204    | Success               | Returns the workstation delete object.             |
