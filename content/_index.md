@@ -20,6 +20,5 @@ A step-by-step guide for artists working with EXR image sequences in Adobe After
 **[Technical Guide - Building a Cloud VFX Workstation on AWS](docs/aws-workstation)**
 A walkthrough on provisioning a GPU-based virtual workstation using Amazon EC2. This sample highlights explanatory writing for technical audiences, blending conceptual overview with hands-on procedure.
 
-
-
-
+**[Resume](resume)**
+My resume and contact info
