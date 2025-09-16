@@ -1,5 +1,5 @@
 ---
-title: "Retieve Usage Data"
+title: "Retrieve Usage Data"
 prev: /docs/stop
 next: /docs/delete
 toc: false
