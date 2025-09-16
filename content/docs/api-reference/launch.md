@@ -22,7 +22,7 @@ Accept: application/json
 ### Parameters
 | Name | In   | Type   | Required | Description                             |
 | ---- | ---- | ------ | -------- | --------------------------------------- |
-| `id` | path | string | Yes      | Unique ID of the workstation to launch. |
+| `id` | path | string | Yes      | Unique ID of the workstation to launch |
 
 ### Request Body
 This endpoint does not require a request body.

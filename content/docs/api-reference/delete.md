@@ -7,7 +7,7 @@ sidebar:
   open: true
 ---
 ### Resource Description
-Delete the workstation
+Use this endpoint to permanently remove a workstation from the system. Deletion detaches and removes any associated compute resources. Persistent storage volumes are also deleted unless they were explicitly created as standalone resources.
 
 > **Note:** The workstation must be in a **stopped** state before it can be deleted.  
 Requests to update a running workstation will return a `400 Bad Request` error.
@@ -22,7 +22,7 @@ Accept: application/json
 ### Parameters
 | Name | In   | Type   | Required | Description                             |
 | ---- | ---- | ------ | -------- | --------------------------------------- |
-| `id` | path | string | Yes      | Unique ID of the workstation to query to delete. |
+| `id` | path | string | Yes      | Unique ID of the workstation to query to delete |
 
 ### Request Body
 This endpoint does not require a request body.
@@ -30,7 +30,7 @@ This endpoint does not require a request body.
 ### Response
 | Status | Meaning               | Description                                      |
 |--------|-----------------------|--------------------------------------------------|
-| 204    | Success               | Returns the workstation delete object.             |
+| 204    | No Content               | Returns the workstation delete object           |
 
 {{< tabs items="Example,Schema,Try it" >}}
   {{< tab >}}

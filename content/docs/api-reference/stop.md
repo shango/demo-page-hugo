@@ -8,7 +8,7 @@ sidebar:
   open: true
 ---
 ### Resource Description
-Stop a Running Workstation. The workstation must be in a running state before it can be stopped.
+Invoking this endpoint powers down the workstation and halts compute billing. Persistent storage remains attached, and the workstation can be relaunched at any time with the Launch endpoint.
 
 Use this endpoint to stop or time-out a workstation.
 
@@ -22,7 +22,7 @@ Accept: application/json
 ### Parameters
 | Name | In   | Type   | Required | Description                             |
 | ---- | ---- | ------ | -------- | --------------------------------------- |
-| `id` | path | string | Yes      | Unique ID of the workstation to stop. |
+| `id` | path | string | Yes      | Unique ID of the workstation to stop |
 
 ### Request Body
 This endpoint does not require a request body.

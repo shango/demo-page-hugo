@@ -21,7 +21,7 @@ Accept: application/json
 ### Parameters
 | Name | In   | Type   | Required | Description                             |
 | ---- | ---- | ------ | -------- | --------------------------------------- |
-| `id` | path | string | Yes      | Unique ID of the workstation to query for usage data. |
+| `id` | path | string | Yes      | Unique ID of the workstation to query for usage data |
 
 ### Request Body
 This endpoint does not require a request body.

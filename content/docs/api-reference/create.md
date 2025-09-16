@@ -77,7 +77,7 @@ curl -X POST "https://api.cloudworkstation.example.com/v1/workstations" \
 ### Response
 | Status | Meaning               | Description                                      |
 |--------|-----------------------|--------------------------------------------------|
-| 201    | Success               | Returns the newly created workstation object.    |
+| 201    | Success               | Returns the newly created workstation object   |
 
 {{< tabs items="Example,Schema" >}}
   {{< tab >}}

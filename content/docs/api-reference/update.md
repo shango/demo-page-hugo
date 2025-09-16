@@ -9,10 +9,10 @@ sidebar:
 ---
 ### Resource Description
 Update the name or configuration of an existing workstation.  
-This endpoint supports **partial updates** — only include the fields you want to change.  
+This endpoint supports **partial updates** - only include the fields you want to change.  
 All unspecified fields remain unchanged.  
 
-> **Note:** The workstation must be in a **stopped** state before updates are allowed.  
+> **Note:** You must stop the workstation before updates are allowed.  
 Requests to update a running workstation will return a `400 Bad Request` error.
 
 ```properties
@@ -44,7 +44,7 @@ Accept: application/json
     }
     ```
   {{< /tab >}}
-      {{< tab >}}
+  {{< tab >}}
     ```json
     {
       "name": "string",
@@ -116,6 +116,6 @@ Accept: application/json
 ### Error Responses
 | Status | Meaning               | Description                                      |
 |--------|-----------------------|--------------------------------------------------|
-| 401    | Unauthorized          | Invalid workstation ID, invalid configuration values, or workstation not in a stopped state. |
+| 401    | Unauthorized          | Invalid workstation ID, invalid configuration values, or workstation not in a stopped state |
 | 404    | Not Found             | Workstation ID does not exist                    |
 | 500    | Internal Server Error | Failed to update workstation due to system error
