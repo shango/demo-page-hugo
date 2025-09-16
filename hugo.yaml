@@ -7,14 +7,11 @@ module:
     - path: github.com/imfing/hextra
 
 markup:
-  # allow raw html
+  highlight:
+    noClasses: false
   goldmark:
     renderer:
       unsafe: true
-
-  # enable hextra syntax highlight
-  highlight:
-    noClasses: false
 
 menu:
   main:
