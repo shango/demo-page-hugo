@@ -1,5 +1,5 @@
 ---
-title: "Launch a Workstation"
+title: "Launch Workstation"
 prev: /docs/create
 next: /docs/stop
 toc: false

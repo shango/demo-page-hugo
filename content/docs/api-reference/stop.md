@@ -1,5 +1,5 @@
 ---
-title: "Stop a Workstation"
+title: "Stop Workstation"
 prev: /docs/launch
 next: /docs/update
 toc: false

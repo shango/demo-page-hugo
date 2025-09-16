@@ -1,5 +1,5 @@
 ---
-title: "Create a Workstation"
+title: "Create Workstation"
 prev: /docs/api-reference
 next: /docs/launch
 toc: false

@@ -1,5 +1,5 @@
 ---
-title: "Delete a Workstation"
+title: "Delete Workstation"
 prev: /docs/update
 toc: false
 weight: 7
