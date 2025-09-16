@@ -24,7 +24,7 @@ Future versions (`/v2/`, `/v3/`) may introduce breaking changes.
 Clients should specify the version in the path to ensure stability.
 
 Example:
-```curl
+```properties
 GET https://api.example.com/v1/workstations
 ```
 ## Endpoints
@@ -38,7 +38,7 @@ GET https://api.example.com/v1/workstations
 ## Authentication
 All requests must include a valid API key in the `Authorization` header:
 
-```bash
+```properties
 Authorization: Bearer <API_TOKEN>
 ```
 ## Response Format

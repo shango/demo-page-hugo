@@ -14,7 +14,7 @@ A workstation consists of a CPU, GPU, memory, and storage resources, and can lat
 Use this endpoint when you want to *add a new workstation* to a project or user account.
 
 ### Endpoint
-```bash
+```properties
 POST /workstations
 Host: api.cloudworkstation.example.com/v1/
 Content-Type: application/json

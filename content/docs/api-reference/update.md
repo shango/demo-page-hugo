@@ -15,7 +15,7 @@ All unspecified fields remain unchanged.
 > **Note:** The workstation must be in a **stopped** state before updates are allowed.  
 Requests to update a running workstation will return a `400 Bad Request` error.
 
-```bash
+```properties
 PATCH /workstations/{id}
 Host: api.cloudworkstation.example.com/v1/
 Content-Type: application/json

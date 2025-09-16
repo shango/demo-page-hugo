@@ -13,7 +13,7 @@ The workstation must be in a stopped state before it can be launched. Once launc
 
 Use this endpoint to power on a workstation for interactive or automated workloads.
 ### Endpoint
-```bash
+```properties
 POST /workstations/{id}/launch
 Host: api.cloudworkstation.example.com/v1/
 Content-Type: application/json

@@ -13,7 +13,7 @@ Stop a Running Workstation. The workstation must be in a running state before it
 Use this endpoint to stop or time-out a workstation.
 
 ### Endpoint
-```bash
+```properties
 POST /workstations/{id}/stop
 Host: api.cloudworkstation.example.com/v1/
 Content-Type: application/json

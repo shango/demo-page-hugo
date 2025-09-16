@@ -12,7 +12,7 @@ Retrieve CPU, GPU, memory, and billing usage for a workstation.
 
 ### Endpoints
 
-```bash
+```properties
 GET /workstations/{id}/usage
 Host: api.cloudworkstation.example.com/v1/
 Content-Type: application/json

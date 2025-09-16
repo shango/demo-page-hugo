@@ -11,7 +11,7 @@ Delete the workstation
 
 ### Endpoints
 
-```bash
+```properties
 GET /workstations/{id}/delete
 Host: api.cloudworkstation.example.com/v1/
 Content-Type: application/json
