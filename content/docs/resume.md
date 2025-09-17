@@ -2,12 +2,13 @@
 title: "Resume"
 ---
 
-[Resume PDF](SGold_Tech_Writer_Resume.pdf)
-
 # Shannon Gold
 **Technical Writer | Documentation Specialist**  
-shannon.gold@gmail.com • 212-361-9633  
-[LinkedIn](http://linkedin.com/in/sggold) • [Portfolio](http://shango.github.io)
+- shannon.gold@gmail.com
+- Phone 212-361-9633  
+- [LinkedIn](http://linkedin.com/in/sggold)
+- [Portfolio](http://shango.github.io)
+- **[Download Resume PDF](/SGold-Resume.pdf)**
 
 ---
 
