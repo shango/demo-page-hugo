@@ -61,7 +61,7 @@ Many GPU-enabled instances require quota increases before you can launch them.
    ![Quota increase dialog with value set to 8](/images/f4_set_new_quota_hl.png)
    > *Figure 4. Setting quota increase value*
 
-9. Provide a brief justification for your request—for example, enter Deploying VFX workstation for remote production—and submit the request.
+9. Provide a brief justification for your request-for example, enter Deploying VFX workstation for remote production-and submit the request.
 
 AWS typically processes quota increase requests within 24 to 48 hours. You'll receive an email notification when your request is approved.
 

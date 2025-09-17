@@ -45,7 +45,6 @@ By the end of this guide, you’ll be able to:
 For more information, see the [OpenEXR documentation](https://openexr.com/en/latest/).
 
 ### The After Effects built-in OCIO color engine
-{: .no_toc }
 
 After Effects includes a built-in OpenColorIO (OCIO) color engine, which provides a complete color management solution for motion picture workflows.
 
@@ -98,7 +97,7 @@ Click **Import** to bring the sequence into your After Effects project.
 ![Import dialog](/images/import_dialogue_01.png)
 Figure 2. Import File dialogue box
 
-After selecting your files and clicking **Import**, you'll see the **Import Options** dialog (see Figure 3). A recommended workflow is to import the footage as a composition, automatically pre-compose the layers, and generate a contact sheet—a composition that displays all layers from the EXR sequence for easy preview.
+After selecting your files and clicking **Import**, you'll see the **Import Options** dialog (see Figure 3). A recommended workflow is to import the footage as a composition, automatically pre-compose the layers, and generate a contact sheet-a composition that displays all layers from the EXR sequence for easy preview.
 
 In the **Import Options** dialog box select: 
 
@@ -179,7 +178,7 @@ Figure 7. Output module - color tab
 
 ## Final Notes
 
-- Always verify color settings at every stage of the pipeline—input, composition, and export.
+- Always verify color settings at every stage of the pipeline-input, composition, and export.
 
 - Consider using consistent naming conventions for exported files to indicate color space (e.g., `Scene01_shotA_ACEScg.exr`).
 

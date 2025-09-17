@@ -18,7 +18,7 @@ I designed a minimal OpenAPI 3.1 specification and rendered it with Swagger UI. 
 Step-by-step instructions, screenshots, and tips for artists working with EXR image sequences.
 
 **[Technical Guide - Building a Cloud VFX Workstation on AWS](docs/aws-workstation)**
-Setup walkthrough using EC2, GPU resources, configuration, cost considerations—technical audience in mind.
+Setup walkthrough using EC2, GPU resources, configuration, cost considerations-technical audience in mind.
 
 **[Resume](resume)**
 My resume and contact info
